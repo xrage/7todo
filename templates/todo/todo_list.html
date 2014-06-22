@@ -1,0 +1,12 @@
+<table class="table table-striped table-hover ">
+
+  <tbody>
+   {% for todo in object_list %}
+    <tr>
+      <td id="{{ todo.todo }}" data-type="text" data-pk="{{ todo.id }}"  data-due_date={{ todo.due_date }} data-url="/seventodo/todo/edit/{{ todo.id }}" data-title="todo"  data-group="{{ todo.group }}" class="todo">{{ todo.todo }}</td>
+      <td>{{ todo.due_date }}</td>
+      <td>{{ todo.created_by }}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+ </table>

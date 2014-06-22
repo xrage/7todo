@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %} 7ToDo {% endblock %}
+
+{% block container %}
+
+<style>
+.editable-click, a.editable-click, a.editable-click:hover {
+    text-decoration: none;
+    border-bottom: none;
+}
+
+</style>
+<div id="7todo">
+
+</div>
+
+ <script>
+$( document ).ready(function(){
+    $( "#7todo" ).load( "{% url "todo_list" %}", function(){
+    $.fn.editable.defaults.mode = 'inline';
+    $.fn.editable.defaults.ajaxOptions = {type: "POST"};
+    $('.todo').editable({
+        params: function(params) {
+            params.csrfmiddlewaretoken = "{{ csrf_token }}";
+            params.group = $(this).attr("data-group");
+            params.group = $(this).attr("data-due_date");
+            params.todo = params.value;
+            return params;
+        },
+    })
+
+    } );
+
+});
+
+
+</script>
+
+{% endblock %}

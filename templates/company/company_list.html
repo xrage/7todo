@@ -1,0 +1,10 @@
+<ul>
+    {% for company in object_list %}
+    <li>{{ company.company }}  :
+    <a href="{% url "company_edit" company.id %}">update</a>
+    <a href="{% url "company_delete" company.id %}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url "company_new" %}">New</a>
